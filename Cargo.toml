@@ -1,0 +1,8 @@
+[package]
+name = "saks"
+version = "0.1.0"
+authors = ["wuaoxiang <pylint@yandex.com>]
+edition = "2018"
+
+[dependencies]
+rppal = { git="https://github.com/golemparts/rppal" }
