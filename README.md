@@ -12,8 +12,9 @@ wiringpi system but uses the /sys/class/gpio interface **rather than accessing t
 
 [sprintf(fName, "/sys/class/gpio/gpio%d/value", i)](https://github.com/WiringPi/WiringPi/blob/093e0a17a40e064260c1f3233b1ccdf7e4c66690/gpio/gpio.c#L428)
 
-1. /sys/class/gpio: wiringpi or wiringpi biding(like Rust wiringpi crate, )
-2. 
+1. /sys/class/gpio: sysfs_gpio(deprecated), gpio(deprecated), maybe not working in pi4B
+2. /dev/gpiomem or /dev/gpiochip0: rppal, wiringpi, gpio-cdev
+3. /dev/pigpio and pigpio daemon process: pigpio
 
 ## Some questions need to solve
 
