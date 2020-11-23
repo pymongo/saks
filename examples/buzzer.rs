@@ -1,10 +1,10 @@
 use rppal::gpio::Gpio;
 
-const BUZZER_PIN_BCM: u8 = 12;
+extern crate saks;
+use saks::pin_map::BUZZER;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Retrieve the GPIO pin and configure it as an output.
-    let mut pin = Gpio::new()?.get(BUZZER_PIN_BCM)?.into_output();
+    let mut pin = Gpio::new()?.get(BUZZER)?.into_output();
 
     loop {
         pin.toggle();

@@ -1,22 +1,43 @@
 # SAKS hat for raspberry_pi
 
-SAKS = swiss army knife shield
+SAKS = Swiss Army Knife Shield for Raspberry Pi
+
+![](https://shumeipai.nxez.com/wp-content/uploads/2015/03/20180301135557875.jpg)
 
 ---
 
-## my raspberry_pi notes
+## How other library control GPIO
+
+wiringpi system but uses the /sys/class/gpio interface **rather than accessing the hardware directly**(softPwmWrite)
+
+[sprintf(fName, "/sys/class/gpio/gpio%d/value", i)](https://github.com/WiringPi/WiringPi/blob/093e0a17a40e064260c1f3233b1ccdf7e4c66690/gpio/gpio.c#L428)
+
+1. /sys/class/gpio: wiringpi or wiringpi biding(like Rust wiringpi crate, )
+2. 
+
+## Some questions need to solve
+
+- [ ] Why gpio access from /dev/gpiomem via mmap syscall is faster than `format!("/sys/class/gpio/gpio{}/active_low", gpio_num)`
+- [ ] Why gpio pin number has three encoding?(BOARD, BCM, wiringpi)
+- [ ] About the onboard_led(/sys/class/leds/led0/) like arduino's LED_BUILTIN
+
+### BOARD, BCM and wiringpi encoding
+
+---
+
+## My raspberry_pi notes
 
 ### cli tools
 
-#### cpu temperature
+#### CPU temperature
 
 > vcgencmd measure_temp
 
-#### remap caps to backspace
+#### Remap caps to backspace
 
 setxkbmap -option caps:backspace
 
-### setup raspberry_pi
+### Setup raspberry_pi
 
 How to connect raspberry_pi without internet/display/GUI Desktop? 
 

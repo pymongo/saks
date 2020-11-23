@@ -1,8 +1,17 @@
 [package]
 name = "saks"
 version = "0.1.0"
-authors = ["wuaoxiang <pylint@yandex.com>]
+authors = ["wuaoxiang <os.popen@gmail.com>"]
 edition = "2018"
+description = "Swiss Army Knife Shield for Raspberry Pi"
+keywords = [ "gpio", "rpi", "raspberrypi", "arm", "embedded" ]
+repository = "https://github.com/pymongo/saks"
+documentation = "https://docs.rs/saks"
+readme = "README.md"
+license = "MIT"
 
 [dependencies]
 rppal = { git="https://github.com/golemparts/rppal" }
+
+[dev-dependencies]
+chrono = "0.4" # seven segment display example
