@@ -67,7 +67,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     loop {
         let mut now_sec: time_t = unsafe { std::mem::zeroed() };
-        unsafe { libc::time(&mut now_sec as *mut time_t);}
+        unsafe {
+            libc::time(&mut now_sec as *mut time_t);
+        }
         now_sec += tm_struct.tm_gmtoff as time_t;
         let today_seconds = now_sec % (24 * 3600);
         let minutes = today_seconds / 60;
@@ -75,7 +77,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let hour = minutes / 60;
         let minute = (minutes - hour * 60) as u8;
         println!("localtime={}:{}:{}", hour, minute, second);
-        let data: [u8; 4] = [minute/10, minute%10, second/10, second%10];
+        let data: [u8; 4] = [minute / 10, minute % 10, second / 10, second % 10];
 
         ic_tm1637.i2c_bus_write_command(0x44);
         for i in 0..4 {

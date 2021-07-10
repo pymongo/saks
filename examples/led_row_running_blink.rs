@@ -1,12 +1,12 @@
 use rppal::gpio::Gpio;
 extern crate saks;
-use saks::pin_map::{DS,STCP, SHCP};
+use saks::pin_map::{DS, SHCP, STCP};
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut ds = Gpio::new()?.get(DS)?.into_output();
     let mut shcp = Gpio::new()?.get(SHCP)?.into_output();
     let mut stcp = Gpio::new()?.get(STCP)?.into_output();
-    let mut led_row_state: u8 = 0x01;
+    let led_row_state: u8 = 0x01;
     loop {
         // led_row_state = led_row_state.rotate_left(1);
         println!("state = {:8b}", led_row_state);
@@ -23,7 +23,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         // 74HC595 write a byte
         stcp.set_low();
         stcp.set_high();
-        
+
         std::thread::sleep(std::time::Duration::from_millis(300));
     }
 }
