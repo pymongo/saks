@@ -1,13 +1,14 @@
-use rppal::gpio::Gpio;
+use saks::{Saks, SaksPins, VoltageLevel};
 
-extern crate saks;
-use saks::pin_map::BUZZER;
-
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mut pin = Gpio::new()?.get(BUZZER)?.into_output();
-
-    loop {
-        pin.toggle();
-        std::thread::sleep(std::time::Duration::from_millis(2000));
+fn main() {
+    let saks_gpio = Saks::new();
+    let mut level = VoltageLevel::Low;
+    for _ in 0..4 {
+        saks_gpio.set_level(SaksPins::Buzzer, level);
+        assert_eq!(saks_gpio.get_level(SaksPins::Buzzer), level);
+        unsafe {
+            libc::sleep(1);
+        }
+        level = !level;
     }
 }

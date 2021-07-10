@@ -1,6 +1,6 @@
 [package]
 name = "saks"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["wuaoxiang <os.popen@gmail.com>"]
 edition = "2018"
 description = "Swiss Army Knife Shield for Raspberry Pi"
@@ -14,6 +14,3 @@ license = "MIT"
 
 [dependencies]
 libc = "0.2"
-
-[dev-dependencies]
-rppal = "0.12.0"

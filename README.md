@@ -22,21 +22,13 @@ wiringpi system but uses the /sys/class/gpio interface **rather than accessing t
 - [ ] Why gpio pin number has three encoding?(BOARD, BCM, wiringpi)
 - [ ] About the onboard_led(/sys/class/leds/led0/) like arduino's LED_BUILTIN
 
-### BOARD, BCM and wiringpi encoding
-
 ---
 
 ## My raspberry_pi notes
 
-### cli tools
-
-#### CPU temperature
+### CPU temperature
 
 > vcgencmd measure_temp
-
-#### Remap caps to backspace
-
-setxkbmap -option caps:backspace
 
 ### Setup raspberry_pi
 
