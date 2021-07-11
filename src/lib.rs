@@ -138,10 +138,7 @@ impl Saks {
         // eg. GPFSEL1 bit [6..=8] is the bit_mask to set Buzzer=12 pin_mode
         let pin_mode_shift = (bcm_pin_num % 10) * 3;
 
-        let reg_ptr = unsafe {
-            self.mapped_addr
-                .offset(GPFSEL0 as isize + gpfsel_index as isize)
-        };
+        let reg_ptr = unsafe { self.mapped_addr.add(GPFSEL0 + gpfsel_index as usize) };
 
         let mut reg_val = unsafe { *reg_ptr };
         // eg. bit_mask to set GPFSEL1's [6..=8] bit to zero
