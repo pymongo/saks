@@ -4,6 +4,28 @@ SAKS = Swiss Army Knife Shield for Raspberry Pi
 
 ![](https://shumeipai.nxez.com/wp-content/uploads/2015/03/20180301135557875.jpg)
 
+## examples
+
+### turn on buzzer by saks::Saks lib
+
+```rust
+use saks::{Saks, SaksPins, VoltageLevel};
+
+fn main() {
+    // Saks lib would automatic set buzzer pin to Output mode,
+    // and turn off buzzer when deconstruct
+    let saks_gpio = Saks::new();
+    saks_gpio.set_level(SaksPins::Buzzer, VoltageLevel::Low);
+    std::thread::sleep(std::time::Duration::from_millis(2000));
+}
+```
+
+### turn on buzzer via command line
+
+> raspi-gpio set 12 op
+> 
+> raspi-gpio set 12 dl
+
 ---
 
 ## How other library control GPIO
